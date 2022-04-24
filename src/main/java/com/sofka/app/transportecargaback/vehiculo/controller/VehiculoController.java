@@ -25,6 +25,7 @@ public class VehiculoController {
     @PostMapping("/vehiculo")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Vehiculo> save(@RequestBody VehiculoDTO vehiculoDTO){
+
         Vehiculo vehiculo = mapper.map(vehiculoDTO, Vehiculo.class);
         return this.service.save(vehiculo);
     }
