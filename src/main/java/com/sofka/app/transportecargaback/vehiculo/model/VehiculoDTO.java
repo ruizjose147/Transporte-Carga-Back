@@ -10,9 +10,9 @@ import lombok.*;
 @Data
 public class VehiculoDTO {
 
-    public String placa;
-    public String marca;
-    public Integer modelo;
-    public Integer capacidad;
-    public String tipo;
+    private String placa;
+    private String marca;
+    private Integer modelo;
+    private Integer capacidad;
+    private String tipo;
 }

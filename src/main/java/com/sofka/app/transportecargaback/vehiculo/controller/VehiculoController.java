@@ -11,7 +11,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-//@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class VehiculoController {
 
     @Autowired
@@ -29,14 +29,14 @@ public class VehiculoController {
         return this.service.save(vehiculo);
     }
 
-    @GetMapping("/Vehiculos")
+    @GetMapping("/vehiculos")
     public Flux<VehiculoDTO> findAll(){
         return this.service.findAll()
                 .flatMap(v -> Mono.just(mapper.map(v, VehiculoDTO.class)));
     }
 
-    @GetMapping("vehuculo/{placa}")
-    public Mono<VehiculoDTO> findByPlaca(String placa){
+    @GetMapping("/vehuculo/{placa}")
+    public Mono<VehiculoDTO> findByPlaca(@PathVariable("placa") String placa){
         return this.service.findByPlaca(placa)
                 .flatMap(v -> Mono.just(mapper.map(v, VehiculoDTO.class)));
     }

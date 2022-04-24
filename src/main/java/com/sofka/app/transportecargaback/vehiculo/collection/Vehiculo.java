@@ -1,5 +1,6 @@
 package com.sofka.app.transportecargaback.vehiculo.collection;
 
+
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,19 +14,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Vehiculo {
 
     @Id
-    public String placa;
+    @NonNull
+    private String placa;
 
     @NonNull
-    public String marca;
+    private String marca;
 
     @NonNull
-    public Integer modelo;
+    private Integer modelo;
 
     @NonNull
-    public Integer capacidad;
+    private Integer capacidad;
 
     @NonNull
-    public String tipo;
+    private String tipo;
 
     //private Conductor conductor;
 }
