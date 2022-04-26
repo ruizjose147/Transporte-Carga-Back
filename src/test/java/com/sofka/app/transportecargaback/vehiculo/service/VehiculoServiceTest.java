@@ -17,7 +17,7 @@ class VehiculoServiceTest {
         Vehiculo vehiculo = new Vehiculo();
         vehiculo.setPlaca("ABC123");
         vehiculo.setMarca("TOYOTA");
-        vehiculo.setModelo(2020);
+        vehiculo.setAño(2020);
         vehiculo.setCapacidad(1000);
         vehiculo.setTipo("PICK UP");
 
@@ -31,7 +31,7 @@ class VehiculoServiceTest {
         Vehiculo vehiculo = new Vehiculo();
         vehiculo.setPlaca("ABC123");
         vehiculo.setMarca("TOYOTA");
-        vehiculo.setModelo(2020);
+        vehiculo.setAño(2020);
         vehiculo.setCapacidad(1000);
         vehiculo.setTipo("PICK UP");
         service.save(vehiculo);
@@ -39,7 +39,7 @@ class VehiculoServiceTest {
         Vehiculo vehiculoDos = new Vehiculo();
         vehiculoDos.setPlaca("ABC456");
         vehiculoDos.setMarca("MAZDA");
-        vehiculoDos.setModelo(2022);
+        vehiculoDos.setAño(2022);
         vehiculoDos.setCapacidad(800);
         vehiculoDos.setTipo("PICK UP");
         service.save(vehiculoDos);
@@ -55,7 +55,7 @@ class VehiculoServiceTest {
         Vehiculo vehiculo = new Vehiculo();
         vehiculo.setPlaca("ABC123");
         vehiculo.setMarca("TOYOTA");
-        vehiculo.setModelo(2020);
+        vehiculo.setAño(2020);
         vehiculo.setCapacidad(1000);
         vehiculo.setTipo("PICK UP");
         service.save(vehiculo);

@@ -1,7 +1,7 @@
 package com.sofka.app.transportecargaback.vehiculo.collection;
 
 
-import com.sofka.app.transportecargaback.Conductor.Conductor;
+import com.sofka.app.transportecargaback.Conductor.*;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,7 +22,7 @@ public class Vehiculo {
     private String marca;
 
     @NonNull
-    private Integer modelo;
+    private Integer año;
 
     @NonNull
     private Integer capacidad;
