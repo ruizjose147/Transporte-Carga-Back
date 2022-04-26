@@ -1,6 +1,7 @@
 package com.sofka.app.transportecargaback.vehiculo.collection;
 
 
+import com.sofka.app.transportecargaback.Conductor.Conductor;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -28,6 +29,6 @@ public class Vehiculo {
 
     @NonNull
     private String tipo;
-
-    //private Conductor conductor;
+    @NonNull
+    private Conductor conductor;
 }

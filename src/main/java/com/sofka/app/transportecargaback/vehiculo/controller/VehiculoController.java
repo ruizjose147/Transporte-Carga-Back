@@ -25,7 +25,6 @@ public class VehiculoController {
     @PostMapping("/vehiculo")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Vehiculo> save(@RequestBody VehiculoDTO vehiculoDTO){
-
         Vehiculo vehiculo = mapper.map(vehiculoDTO, Vehiculo.class);
         return this.service.save(vehiculo);
     }
@@ -36,10 +35,15 @@ public class VehiculoController {
                 .flatMap(v -> Mono.just(mapper.map(v, VehiculoDTO.class)));
     }
 
-    @GetMapping("/vehuculo/{placa}")
+    @GetMapping("/vehiculo/{placa}")
     public Mono<VehiculoDTO> findByPlaca(@PathVariable("placa") String placa){
         return this.service.findByPlaca(placa)
                 .flatMap(v -> Mono.just(mapper.map(v, VehiculoDTO.class)));
     }
 
+    @GetMapping("/vehiculo/marca/{marca}")
+    public Flux<VehiculoDTO> findByMarca(String marca){
+        return this.service.findByMarca(marca)
+                .flatMap(v -> Mono.just(mapper.map(v, VehiculoDTO.class)));
+    }
 }

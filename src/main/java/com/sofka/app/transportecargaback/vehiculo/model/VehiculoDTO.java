@@ -1,5 +1,6 @@
 package com.sofka.app.transportecargaback.vehiculo.model;
 
+import com.sofka.app.transportecargaback.Conductor.Conductor;
 import lombok.*;
 
 @AllArgsConstructor
@@ -15,4 +16,5 @@ public class VehiculoDTO {
     private Integer modelo;
     private Integer capacidad;
     private String tipo;
+    private Conductor conductor;
 }

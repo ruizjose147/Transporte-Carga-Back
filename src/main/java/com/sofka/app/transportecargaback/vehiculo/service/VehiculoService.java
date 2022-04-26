@@ -25,4 +25,8 @@ public class VehiculoService {
         return this.repositorieI.findByPlaca(placa);
     }
 
+    public Flux<Vehiculo> findByMarca(String marca){
+        return this.repositorieI.findByMarca(marca);
+    }
+
 }
