@@ -13,7 +13,7 @@ public class VehiculoDTO {
 
     private String placa;
     private String marca;
-    private Integer año;
+    private Integer anio;
     private Integer capacidad;
     private String tipo;
     private Conductor conductor;

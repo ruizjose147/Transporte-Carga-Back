@@ -2,7 +2,7 @@ package com.sofka.app.transportecargaback.vehiculo.service;
 
 import com.sofka.app.transportecargaback.vehiculo.collection.Vehiculo;
 
-import com.sofka.app.transportecargaback.vehiculo.repositorie.VehiculoRepositorieI;
+import com.sofka.app.transportecargaback.vehiculo.repositories.IVehiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 public class VehiculoService {
 
     @Autowired
-    VehiculoRepositorieI repositorieI;
+    IVehiculoRepository repositorieI;
 
 
     public Mono<Vehiculo> save(Vehiculo vehiculo){

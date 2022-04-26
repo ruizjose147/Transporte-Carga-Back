@@ -22,7 +22,7 @@ public class Vehiculo {
     private String marca;
 
     @NonNull
-    private Integer año;
+    private Integer anio;
 
     @NonNull
     private Integer capacidad;

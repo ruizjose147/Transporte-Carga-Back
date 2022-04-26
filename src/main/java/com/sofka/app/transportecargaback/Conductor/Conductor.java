@@ -19,5 +19,5 @@ public class Conductor {
     @NonNull
     private Integer edad;
     @NonNull
-    private String celulaar;
+    private String celular;
 }
