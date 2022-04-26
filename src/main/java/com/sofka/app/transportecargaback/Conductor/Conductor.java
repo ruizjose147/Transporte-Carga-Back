@@ -20,4 +20,6 @@ public class Conductor {
     private Integer edad;
     @NonNull
     private String celular;
+    @NonNull
+    private String correo;
 }
