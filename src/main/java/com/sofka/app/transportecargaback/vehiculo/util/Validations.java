@@ -10,6 +10,7 @@ public class Validations {
 
     public boolean validaPlaca(String placa){
         boolean valido = true;
+        placa = placa.toUpperCase();
         placa = placa.replaceAll("[^a-zA-Z0-9]", "");
         if(placa.length() != 6){
             valido = false;
@@ -23,19 +24,19 @@ public class Validations {
         return valido;
     }
 
-    public boolean validarMarca(String marca){
+    /*public boolean validarMarca(String marca){
         String marcaMayus = marca.toUpperCase();
         if(marcaMayus.matches(".*[0-9].*")){
             return false;
         }
         return true;
-    }
+    }*/
 
-    public boolean validarModelo(Integer modelo){
+    public boolean validarAnio(Integer anio){
         boolean result = true;
-        if(modelo < 2000)
+        if(anio < 2000)
             result = false;
-        if(modelo > 2023)
+        if(anio > 2023)
             result = false;
         return result;
     }

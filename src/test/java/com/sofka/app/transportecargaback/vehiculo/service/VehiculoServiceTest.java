@@ -26,7 +26,7 @@ class VehiculoServiceTest {
 
     }
 
-    @Test
+    /*@Test
     void findAll() {
         Vehiculo vehiculo = new Vehiculo();
         vehiculo.setPlaca("ABC123");
@@ -62,5 +62,5 @@ class VehiculoServiceTest {
 
         Flux<Vehiculo> marca = service.findByMarca("TOYOTA");
         StepVerifier.create(marca).expectNext(vehiculo).verifyComplete();
-    }
+    }*/
 }
