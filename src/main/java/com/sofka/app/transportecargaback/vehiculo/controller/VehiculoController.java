@@ -46,4 +46,10 @@ public class VehiculoController {
         return this.service.findByMarca(marca)
                 .flatMap(v -> Mono.just(mapper.map(v, VehiculoDTO.class)));
     }
+
+    @GetMapping("/conductor/correo/{correo}")
+    public Mono<VehiculoDTO> findByCorreoConductor(String correo){
+        return this.service.findByCorreo(correo)
+                .flatMap(v -> Mono.just(mapper.map(v, VehiculoDTO.class)));
+    }
 }

@@ -1,6 +1,5 @@
 package com.sofka.app.transportecargaback.vehiculo.service;
 
-import com.sofka.app.transportecargaback.Conductor.Conductor;
 import com.sofka.app.transportecargaback.vehiculo.collection.Vehiculo;
 
 import com.sofka.app.transportecargaback.vehiculo.repositories.IVehiculoRepository;
@@ -33,6 +32,10 @@ public class VehiculoService {
 
     public Flux<Vehiculo> findByMarca(String marca){
         return this.repositorieI.findByMarca(marca);
+    }
+
+    public Mono<Vehiculo> findByCorreo(String correo){
+        return this.repositorieI.findByConductorCorreo(correo);
     }
 
 }

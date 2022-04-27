@@ -1,7 +1,7 @@
 package com.sofka.app.transportecargaback.vehiculo.collection;
 
 
-import com.sofka.app.transportecargaback.Conductor.*;
+import com.sofka.app.transportecargaback.Conductor.collection.Conductor;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

@@ -1,4 +1,4 @@
-package com.sofka.app.transportecargaback.Conductor;
+package com.sofka.app.transportecargaback.Conductor.collection;
 
 import com.mongodb.lang.NonNull;
 import lombok.AllArgsConstructor;

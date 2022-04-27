@@ -1,6 +1,6 @@
 package com.sofka.app.transportecargaback.vehiculo.model;
 
-import com.sofka.app.transportecargaback.Conductor.*;
+import com.sofka.app.transportecargaback.Conductor.collection.Conductor;
 import lombok.*;
 
 @AllArgsConstructor

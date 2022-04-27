@@ -11,4 +11,5 @@ public interface IVehiculoRepository extends ReactiveMongoRepository<Vehiculo, S
 
     public Mono<Vehiculo> findByPlaca(String Placa);
     public Flux<Vehiculo> findByMarca(String marca);
+    public Mono<Vehiculo> findByConductorCorreo(String correo);
 }
