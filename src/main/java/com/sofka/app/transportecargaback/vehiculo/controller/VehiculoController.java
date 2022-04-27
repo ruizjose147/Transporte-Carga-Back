@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import javax.validation.Valid;
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class VehiculoController {
@@ -24,7 +26,7 @@ public class VehiculoController {
 
     @PostMapping("/vehiculo")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Vehiculo> save(@RequestBody VehiculoDTO vehiculoDTO){
+    public Mono<Vehiculo> save(@Valid @RequestBody VehiculoDTO vehiculoDTO){
         Vehiculo vehiculo = mapper.map(vehiculoDTO, Vehiculo.class);
         return this.service.save(vehiculo);
     }
@@ -42,13 +44,13 @@ public class VehiculoController {
     }
 
     @GetMapping("/vehiculo/marca/{marca}")
-    public Flux<VehiculoDTO> findByMarca(String marca){
+    public Flux<VehiculoDTO> findByMarca(@PathVariable("marca") String marca){
         return this.service.findByMarca(marca)
                 .flatMap(v -> Mono.just(mapper.map(v, VehiculoDTO.class)));
     }
 
     @GetMapping("/conductor/correo/{correo}")
-    public Mono<VehiculoDTO> findByCorreoConductor(String correo){
+    public Mono<VehiculoDTO> findByCorreoConductor(@PathVariable("correo")String correo){
         return this.service.findByCorreo(correo)
                 .flatMap(v -> Mono.just(mapper.map(v, VehiculoDTO.class)));
     }
