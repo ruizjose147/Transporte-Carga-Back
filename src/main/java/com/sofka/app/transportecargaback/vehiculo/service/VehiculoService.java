@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Optional;
+import java.util.concurrent.ExecutionException;
+
 @Service
 public class VehiculoService {
 
@@ -17,9 +20,20 @@ public class VehiculoService {
     Validations validations;
 
 
-    public Mono<Vehiculo> save(Vehiculo vehiculo){
+    public Mono<Vehiculo> save(Vehiculo vehiculo) throws InterruptedException, ExecutionException {
         String placa = vehiculo.getPlaca();
-        return this.repositorieI.save(vehiculo);
+        try {
+            Vehiculo vehiculoValidacion = this.repositorieI.findByPlaca(placa)
+                    .toFuture().get();
+            if(vehiculoValidacion != null)
+                throw new IllegalArgumentException("La placa ya existe en base de datos");
+            return this.repositorieI.save(vehiculo);
+        } catch (InterruptedException e) {
+            throw e;
+        } catch (ExecutionException e) {
+            throw e;
+        }
+
     }
 
     public Flux<Vehiculo> findAll(){
