@@ -19,6 +19,7 @@ import reactor.test.StepVerifier;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension.class)
@@ -33,7 +34,7 @@ class VehiculoServiceTest {
 
     @Test
     @DisplayName("save")
-    void save() {
+    void save() throws ExecutionException, InterruptedException {
         Vehiculo vehiculo = new Vehiculo();
         Conductor conductor = new Conductor(1001014265, "Carlos", 34, "3216538976", "carlos@gmail.com");
         vehiculo.setPlaca("ABC123");
@@ -50,7 +51,7 @@ class VehiculoServiceTest {
 
     @Test
     @DisplayName("findAll")
-    void findAll() {
+    void findAll() throws ExecutionException, InterruptedException {
         Vehiculo vehiculo = new Vehiculo();
         Conductor conductor = new Conductor(1001014265, "Carlos", 34, "3216538976", "carlos@gmail.com");
         vehiculo.setPlaca("ABC123");
@@ -84,7 +85,7 @@ class VehiculoServiceTest {
 
     @Test
     @DisplayName("findByMarca")
-    void findByMarca() {
+    void findByMarca() throws ExecutionException, InterruptedException {
         Vehiculo vehiculo = new Vehiculo();
         Conductor conductor = new Conductor(7625265, "Simon", 24, "3298238976", "simon@gmail.com");
         vehiculo.setPlaca("ABC456");
@@ -117,7 +118,7 @@ class VehiculoServiceTest {
 
     @Test
     @DisplayName("findByPlaca")
-    void findByPlaca() {
+    void findByPlaca() throws ExecutionException, InterruptedException {
         Vehiculo vehiculo = new Vehiculo();
         Conductor conductor = new Conductor(7625265, "Simon", 24, "3298238976", "simon@gmail.com");
         vehiculo.setPlaca("ABC456");
@@ -135,7 +136,7 @@ class VehiculoServiceTest {
 
     @Test
     @DisplayName("findByCorreoConductor")
-    void findByCorreoConductor() {
+    void findByCorreoConductor() throws ExecutionException, InterruptedException {
         Vehiculo vehiculoDos = new Vehiculo();
         Conductor conductor2 = new Conductor(100026373, "Viviana", 30, "8336272976", "viviana@gmail.com");
         vehiculoDos.setPlaca("GHL2563");
