@@ -1,5 +1,6 @@
 package com.sofka.app.transportecargaback.vehiculo.service;
 
+import com.sofka.app.transportecargaback.Conductor.collection.Conductor;
 import com.sofka.app.transportecargaback.vehiculo.collection.Vehiculo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,13 @@ class VehiculoServiceTest {
     @Test
     void save() {
         Vehiculo vehiculo = new Vehiculo();
+        Conductor conductor = new Conductor(1001014265, "Carlos", 34, "3216538976", "carlos@gmail.com");
         vehiculo.setPlaca("ABC123");
-        vehiculo.setMarca("TOYOTA");
+        vehiculo.setMarca("TOYOTA PRIDE BLACK");
         vehiculo.setAnio(2020);
         vehiculo.setCapacidad(1000);
         vehiculo.setTipo("PICK UP");
+        vehiculo.setConductor(conductor);
 
         service.save(vehiculo);
 
