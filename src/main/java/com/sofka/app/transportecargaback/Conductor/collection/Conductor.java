@@ -14,28 +14,22 @@ import javax.validation.constraints.*;
 public class Conductor {
 
     @Id
-    //@NonNull
     @NotNull
     private Integer id;
 
-    //@NonNull
     @NotEmpty(message = "Campo no puede estar vacio")
     @Size(min = 4, max = 30)
     private String nombre;
 
-    //@NonNull
     @NotNull
     @Min(18)
     private Integer edad;
 
-    //@NonNull
     @NotEmpty(message = "Campo no puede estar vacio")
     @Size(min = 10, max = 10)
     @Pattern(regexp = "([0-9]){10}")
     private String celular;
 
-    //@NonNull
     @NotEmpty(message = "Campo no puede estar vacio")
-    @Email
     private String correo;
 }
