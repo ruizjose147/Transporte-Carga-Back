@@ -1,84 +1,40 @@
 package com.sofka.app.transportecargaback.vehiculo.util;
 
+import com.sofka.app.transportecargaback.Conductor.collection.Conductor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.regex.Pattern;
+
 public class Validations {
 
-    public String validarPlacaLetras(String placa){
-        String placaOk;
-        placaOk = placa.toUpperCase();
-        return placaOk;
-    }
-
-    public boolean validaPlaca(String placa){
-        boolean valido = true;
-        placa = placa.toUpperCase();
-        placa = placa.replaceAll("[^a-zA-Z0-9]", "");
-        if(placa.length() != 6){
-            valido = false;
-        }
-        if(!placa.substring(0, 3).matches("[A-Z]*")){
-            valido = false;
-        }
-        if(!placa.substring(3).matches("[0-9]*")){
-            valido = false;
-        }
-        return valido;
-    }
-
-    /*public boolean validarMarca(String marca){
-        String marcaMayus = marca.toUpperCase();
-        if(marcaMayus.matches(".*[0-9].*")){
-            return false;
-        }
-        return true;
-    }*/
-
-    public boolean validarAnio(Integer anio){
-        boolean result = true;
-        if(anio < 2000)
-            result = false;
-        if(anio > 2023)
-            result = false;
-        return result;
-    }
-
-    public boolean validarCapacidad(Integer capacidad){
-        boolean result = true;
-        if(capacidad<= 0)
-            result = false;
-        if(capacidad > 99999)
-            result = false;
-        return result;
-    }
-
-    public boolean validarTipo(String tipo){
+    public static Boolean ValidarTipo(String tipo){
         String tipoMayuscula = tipo.toUpperCase();
-        boolean validar = false;
-        String tipoUno = "CAMION";
-        String tipoDos = "VAN";
-        String tipoTres = "PICK UP";
-        if(tipoMayuscula.equals(tipoUno))
-            validar = true;
-        if(tipoMayuscula.equals(tipoDos))
-            validar = true;
-        if(tipoMayuscula.equals(tipoTres))
-            validar = true;
-        return validar;
+        return tipoMayuscula.contains("VAN") || tipoMayuscula.contains("PICK UP") || tipoMayuscula.contains("CAMIÓN");
     }
 
-    public static void main(String[] args) {
+    public static ResponseStatusException ValidarConductor(Conductor c){
+        Pattern patternId = Pattern.compile("[0-9]{10}");
+        Pattern patternId2 = Pattern.compile("[0-9]{8}");
+        Pattern patternNombre = Pattern.compile("[A-z]{3,}[ ][A-z]{3,}");
+        Pattern patternCelular = Pattern.compile("[0-9]{10}");
+        Pattern patternCorreo = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
 
-        String nueva = "abc123";
-        Validations validations = new Validations();
+        if(!patternId.matcher(c.getId().toString()).matches() && !patternId2.matcher(c.getId().toString()).matches()){
+            return new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id no es válido");
+        } else if (!patternNombre.matcher(c.getNombre()).matches()){
+            return new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nombre no es válido");
+        } else if (!(c.getEdad()>=18 && c.getEdad()<100)){
+            return new ResponseStatusException(HttpStatus.BAD_REQUEST, "Edad no es válida");
+        } else if (!patternCelular.matcher(c.getCelular()).matches()){
+            return new ResponseStatusException(HttpStatus.BAD_REQUEST, "Celular no es válido");
+        }else if (!patternCorreo.matcher(c.getCorreo()).matches()){
+            return new ResponseStatusException(HttpStatus.BAD_REQUEST, "Correo no es válido");
+        }
 
-       // String nuevaOk = validations.validarPlacaLetras(nueva);
-       // System.out.println(nuevaOk);
-        //String prueba = "AB21r3";
-        //System.out.println(validations.validaPlaca(prueba));
-        Integer capacidadPrueba = 1000000;
-        String marca = "1mazda";
-        //System.out.println(validations.validarCapacidad(capacidadPrueba));
-        //System.out.println(validations.validarMarca(marca));
-        String tipo = "pickup";
-        System.out.println(validations.validarTipo(tipo));
+        return new ResponseStatusException(HttpStatus.OK);
+
+
     }
+
 }

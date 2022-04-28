@@ -1,6 +1,7 @@
 package com.sofka.app.transportecargaback.vehiculo.model;
 
 import com.sofka.app.transportecargaback.Conductor.collection.Conductor;
+import com.sofka.app.transportecargaback.vehiculo.util.Validations;
 import lombok.*;
 import org.hibernate.validator.constraints.UniqueElements;
 
@@ -37,4 +38,8 @@ public class VehiculoDTO {
     private String tipo;
 
     private Conductor conductor;
+
+    public Boolean isTipoValid(){
+        return Validations.ValidarTipo(tipo);
+    }
 }
