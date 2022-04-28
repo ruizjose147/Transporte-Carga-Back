@@ -18,29 +18,24 @@ import javax.validation.constraints.*;
 public class Vehiculo {
 
     @Id
-    //@NonNull
     @NotBlank(message = "La placa no puede estar vacia")
     @Size(min = 6, max = 6)
     private String placa;
 
-    //@NonNull
     @NotBlank(message = "La marca no puede estar vacia")
     @Size(min = 4, max = 16)
     private String marca;
 
-    ///@NonNull
     @NotNull
     @Min(2000)
     @Max(2023)
     private Integer anio;
 
-    //@NonNull
     @NotNull
     @Min(1)
     @Max(99999)
     private Integer capacidad;
 
-    //@NonNull
     @NotBlank(message = "La tipo no puede estar vacia")
     @Size(min = 3, max = 7)
     private String tipo;

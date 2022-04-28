@@ -2,12 +2,10 @@ package com.sofka.app.transportecargaback.vehiculo.service;
 
 import com.sofka.app.transportecargaback.Conductor.collection.Conductor;
 import com.sofka.app.transportecargaback.vehiculo.collection.Vehiculo;
-import com.sofka.app.transportecargaback.vehiculo.model.VehiculoDTO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -15,7 +13,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.test.StepVerifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +22,7 @@ import java.util.concurrent.ExecutionException;
 @ExtendWith(SpringExtension.class)
 class VehiculoServiceTest {
 
-    /*@Autowired
+    @Autowired
     @MockBean
     VehiculoService service;
 
@@ -45,8 +42,6 @@ class VehiculoServiceTest {
         vehiculo.setConductor(conductor);
 
         service.save(vehiculo);
-
-
     }
 
     @Test
@@ -79,8 +74,6 @@ class VehiculoServiceTest {
         Flux<Vehiculo> flux = Flux.fromIterable(list);
         Mockito.when(service.findAll()).thenReturn(flux);
         webTestClient.get().uri("/vehiculos").exchange().expectStatus();
-
-
     }
 
     @Test
@@ -150,5 +143,5 @@ class VehiculoServiceTest {
         Mockito.when(service.findByCorreo("viviana@gmail.com")).thenReturn(Mono.just(vehiculoDos));
         webTestClient.get().uri("/conductor/correo/viviana@gmail.com").exchange().expectStatus();
 
-    }*/
+    }
 }
