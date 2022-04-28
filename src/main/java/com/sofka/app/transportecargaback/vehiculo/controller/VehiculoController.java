@@ -3,6 +3,7 @@ package com.sofka.app.transportecargaback.vehiculo.controller;
 import com.sofka.app.transportecargaback.vehiculo.collection.Vehiculo;
 import com.sofka.app.transportecargaback.vehiculo.model.VehiculoDTO;
 import com.sofka.app.transportecargaback.vehiculo.service.VehiculoService;
+import com.sofka.app.transportecargaback.vehiculo.util.Validations;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,17 +31,21 @@ public class VehiculoController {
     @PostMapping("/vehiculo")
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Vehiculo> save(@Valid @RequestBody VehiculoDTO vehiculoDTO) {
+        ResponseStatusException response = Validations.ValidarConductor(vehiculoDTO.getConductor());
         try{
-            Pattern patternCelular = Pattern.compile("[0-9]{10}");
-            Matcher validacionCelular = patternCelular.matcher(vehiculoDTO.getConductor().getCelular());
-            if(!validacionCelular.matches())
-                return Mono.error(new ResponseStatusException(HttpStatus.BAD_REQUEST, "El numero de celular no es valido"));
-            Vehiculo vehiculo = mapper.map(vehiculoDTO, Vehiculo.class);
-            System.out.println("entrada");
-            return this.service.save(vehiculo);
+            if(vehiculoDTO.isTipoValid() && response.getStatus().is2xxSuccessful()){
+                Vehiculo vehiculo = mapper.map(vehiculoDTO, Vehiculo.class);
+                return this.service.save(vehiculo);
+            }else if (!vehiculoDTO.isTipoValid()){
+                return Mono.error(new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tipo de vehículo no es válido"));
+            }else{
+                return Mono.error(response);
+            }
+
         }catch (Exception e) {
             return Mono.error(new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage()));
         }
+
     }
 
 

@@ -47,4 +47,6 @@ public class Vehiculo {
 
     @NonNull
     private Conductor conductor;
+
+
 }

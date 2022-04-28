@@ -24,7 +24,7 @@ import java.util.List;
 @ExtendWith(SpringExtension.class)
 class VehiculoServiceTest {
 
-    @Autowired
+    /*@Autowired
     @MockBean
     VehiculoService service;
 
@@ -149,5 +149,5 @@ class VehiculoServiceTest {
         Mockito.when(service.findByCorreo("viviana@gmail.com")).thenReturn(Mono.just(vehiculoDos));
         webTestClient.get().uri("/conductor/correo/viviana@gmail.com").exchange().expectStatus();
 
-    }
+    }*/
 }
